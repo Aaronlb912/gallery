@@ -182,29 +182,28 @@
 }
 
 .gy-cloud {
-  margin-top: 22px;
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--gy-paper);
+  border: 1px solid var(--gy-line);
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px 10px;
+  align-items: center;
+  gap: 8px 14px;
 }
 
 .gy-cloud-copy {
   margin: 0;
+  flex: 1 1 12rem;
   font-family: var(--gy-ui);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
   color: var(--gy-ink-soft);
-}
-
-.gy-cloud-copy .gy-quiet {
-  font-size: 12px;
 }
 
 .gy-cloud .gy-miss {
   flex: 1 1 100%;
   margin: 0;
-  font-size: 12px;
 }
 
 .gy-caption-field {

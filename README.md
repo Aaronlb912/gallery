@@ -84,7 +84,7 @@ The public page is a try. Galleries stay in that browser until you sign
 in.
 
 1. Open the Galleries page.
-2. Sign in at the bottom of the list. A window opens.
+2. Sign in under New gallery. A window opens.
 3. Make a free account, or sign in if you already have one.
 4. This page remembers you. Edits save to that account.
 5. On another device, open the same demo and sign in with that same

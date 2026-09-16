@@ -232,20 +232,22 @@ export function Workspace({
                 {cloud.name ? `Signed in as ${cloud.name}.` : 'Signed in.'}
                 {cloudNote && !/^signed in/i.test(cloudNote) ? ` ${cloudNote}` : ''}
               </p>
-              <button type="button" className="gy-quiet" onClick={onPullCloud}>
-                Load saved
-              </button>
-              <button type="button" className="gy-quiet" onClick={onForgetCloud}>
-                Sign out
-              </button>
+              <div className="gy-actions">
+                <button type="button" className="gy-btn-ghost" onClick={onPullCloud}>
+                  Load saved
+                </button>
+                <button type="button" className="gy-quiet" onClick={onForgetCloud}>
+                  Sign out
+                </button>
+              </div>
             </>
           ) : (
-            <p className="gy-cloud-copy">
-              <button type="button" className="gy-quiet" onClick={onSignInCloud}>
+            <>
+              <p className="gy-cloud-copy">Keep these galleries on another device.</p>
+              <button type="button" className="gy-btn-ghost" onClick={onSignInCloud}>
                 Sign in
-              </button>{' '}
-              to keep these on another device.
-            </p>
+              </button>
+            </>
           )}
           {cloudMiss ? <p className="gy-miss">{cloudMiss}</p> : null}
         </div>
