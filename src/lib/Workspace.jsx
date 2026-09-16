@@ -140,8 +140,8 @@ export function Workspace({
         <div>
           <h1>Galleries</h1>
           <p className="gy-hint">
-            Pictures stay on this computer until you sign in below. Get the
-            files if you want the gallery in your own app.
+            Pictures stay on this computer. Download JSON if you want a
+            copy. Open a gallery, or make a blank one.
           </p>
         </div>
         <div className="gy-actions">
@@ -169,8 +169,6 @@ export function Workspace({
         onChange={loadJson}
       />
       {miss ? <p className="gy-miss">{miss}</p> : null}
-      {cloudMiss ? <p className="gy-miss">{cloudMiss}</p> : null}
-      {cloudNote ? <p className="gy-note">{cloudNote}</p> : null}
       {workspace.galleries.length === 0 ? (
         <p className="gy-empty">No galleries. Make one to start.</p>
       ) : (
@@ -228,40 +226,28 @@ export function Workspace({
       </form>
       {onSignInCloud ? (
         <div className="gy-cloud">
-          <h2>Keep these galleries on your other devices</h2>
-          <p className="gy-hint">
-            Sign in. A window opens. Make a free account, or use one you
-            already have. This page remembers you. On your phone, open the
-            same demo and sign in with that same account. No keys to copy.
-          </p>
           {connected ? (
-            <p className="gy-note">
-              {cloud.name
-                ? `Signed in as ${cloud.name}.`
-                : 'Signed in. Galleries save to this account.'}
-            </p>
-          ) : (
-            <p className="gy-note">
-              Until you sign in, galleries stay in this browser only.
-            </p>
-          )}
-          <div className="gy-actions">
-            {connected ? null : (
-              <button type="button" onClick={onSignInCloud}>
-                Sign in
+            <>
+              <p className="gy-cloud-copy">
+                {cloud.name ? `Signed in as ${cloud.name}.` : 'Signed in.'}
+                {cloudNote && !/^signed in/i.test(cloudNote) ? ` ${cloudNote}` : ''}
+              </p>
+              <button type="button" className="gy-quiet" onClick={onPullCloud}>
+                Load saved
               </button>
-            )}
-            {connected ? (
-              <button type="button" className="gy-btn-ghost" onClick={onPullCloud}>
-                Load saved galleries
-              </button>
-            ) : null}
-            {connected ? (
               <button type="button" className="gy-quiet" onClick={onForgetCloud}>
                 Sign out
               </button>
-            ) : null}
-          </div>
+            </>
+          ) : (
+            <p className="gy-cloud-copy">
+              <button type="button" className="gy-quiet" onClick={onSignInCloud}>
+                Sign in
+              </button>{' '}
+              to keep these on another device.
+            </p>
+          )}
+          {cloudMiss ? <p className="gy-miss">{cloudMiss}</p> : null}
         </div>
       ) : null}
     </div>
