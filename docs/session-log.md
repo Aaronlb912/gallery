@@ -88,3 +88,16 @@ Landed:
 
 Next session:
 - None. This product is done.
+
+## 2026-09-16 — session 6
+
+Runs: http://127.0.0.1:49340/ (`npm start`)
+Live: https://aaronlb912.github.io/gallery/
+
+Landed:
+- Galleries page Sign in (Puter). No GitHub key or gist id.
+- Same galleries on another device after that sign-in.
+- Sign out leaves this browser on local save only.
+
+Next session:
+- None. This product is done.

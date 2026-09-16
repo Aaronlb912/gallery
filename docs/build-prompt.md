@@ -20,7 +20,8 @@ Pages:
 - Edit piece: Edit on a piece. Title, caption, credit, date. Duplicate.
 - Large print: click the picture. Escape goes back.
 
-Auth: none.
+Auth: none required. Demo can sign in with Puter to keep galleries
+on another device. Host apps omit that and save `value` themselves.
 
 Sample: Mill Street Pottery in `src/lib/sample-gallery.js`. Fake names.
 Email on `.example`. Bisque waiting is the empty shelf.
@@ -72,8 +73,8 @@ says what to do next. Quiet Edit/Remove. Old JSON still loads.
 
 ## This session
 
-Ship: screenshots, demo video, README Demo, LinkedIn draft, GitHub
-Pages, SHIPPED.
+Optional Puter sign-in on the Galleries list so a public visitor can
+keep their own galleries on another device.
 
 ## Next session
 

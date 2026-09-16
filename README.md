@@ -7,8 +7,9 @@ already have.
 Try it:
 https://aaronlb912.github.io/gallery/
 
-Pictures on that page stay in your browser. Get the files if you want
-the gallery in your own app.
+Pictures on that page stay in your browser until you sign in. Get the
+files if you want the gallery in your own app. To use the same
+galleries on your laptop and phone, sign in on the Galleries page.
 
 The demo starts on the gallery list. DEMO GALLERY Mill Street Pottery
 is the sample. Names are fake. Open it, or make a blank gallery.
@@ -30,10 +31,13 @@ Copy `src/lib/`. That folder is the component.
 - `gallery.css` - the look
 - `gallery-json.js` - download, load parse, blank template, and move
   helpers
+- `cloud-store.js` - optional sign-in save for the demo
 - `sample-gallery.js` - Mill Street Pottery sample
 - `index.js` - the import
 
-No account. Galleries opens the list. A new gallery starts empty.
+No account to try the gallery. Sign in is optional if you want the same
+galleries on another device. Galleries opens the list. A new gallery
+starts empty.
 Duplicate a gallery. You cannot remove the last one. The demo keeps
 galleries after a refresh (Reset sample on the list if you want Mill
 Street back). Add photo in the header opens a page. Escape cancels.
@@ -74,6 +78,21 @@ Repo copy: [docs/media/gallery-demo.mp4](docs/media/gallery-demo.mp4)
 
 Voice is Microsoft Andrew Neural. Music is Wallpaper by Kevin MacLeod (incompetech.com), CC BY 3.0.
 
+## Private copy
+
+The public page is a try. Galleries stay in that browser until you sign
+in.
+
+1. Open the Galleries page.
+2. Click Sign in. A window opens.
+3. Make a free account, or sign in if you already have one.
+4. This page remembers you. Edits save to that account.
+5. On another device, open the same demo and sign in with that same
+   account.
+
+You do not copy a key or an id. Sign out if this computer should stop
+saving to the account.
+
 ## Copy into an app
 
 Copy the `src/lib/` folder into your React `src/` folder.
@@ -95,6 +114,9 @@ import { Gallery } from './lib'
 - `value` - `{ galleries, activeGalleryId }`
 - `onChange(next)` - full workspace
 - `onResetSample` - optional. Demo uses this for Reset sample.
+- `cloud`, `cloudNote`, `cloudMiss`, `onSignInCloud`, `onPullCloud`,
+  `onForgetCloud` - optional. The demo uses these for Sign in.
+  A host app can omit them and save `value` itself.
 
 `Gallery`
 

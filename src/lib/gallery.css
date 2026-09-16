@@ -154,6 +154,22 @@
   color: var(--gy-ink-soft);
 }
 
+.gy-actions a.gy-btn-ghost {
+  font-family: var(--gy-ui);
+  font-size: 13px;
+  line-height: 1.2;
+  border: 1px solid var(--gy-ink);
+  background: var(--gy-paper);
+  color: var(--gy-ink);
+  padding: 8px 14px;
+  border-radius: var(--gy-radius);
+  text-decoration: none;
+}
+
+.gy-actions a.gy-btn-ghost:hover {
+  background: #efe6d6;
+}
+
 .gy-add {
   display: flex;
   flex-wrap: wrap;
@@ -163,6 +179,23 @@
   padding: 16px 16px 14px;
   background: var(--gy-paper);
   border: 1px solid var(--gy-line);
+}
+
+.gy-cloud {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--gy-line);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 36rem;
+}
+
+.gy-cloud h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .gy-caption-field {
@@ -583,7 +616,8 @@
   .gy-item-actions,
   .gy-quiet,
   .gy-view,
-  .gy-kicker {
+  .gy-kicker,
+  .gy-cloud {
     display: none !important;
   }
 

@@ -11,12 +11,23 @@ import {
 } from './gallery-json.js'
 import './gallery.css'
 
-export function Workspace({ value, onChange, onResetSample }) {
+export function Workspace({
+  value,
+  onChange,
+  onResetSample,
+  cloud,
+  cloudNote,
+  cloudMiss,
+  onSignInCloud,
+  onPullCloud,
+  onForgetCloud,
+}) {
   const workspace = normalizeWorkspace(value)
   const jsonInput = useRef(null)
   const [page, setPage] = useState('list')
   const [title, setTitle] = useState('')
   const [miss, setMiss] = useState('')
+  const connected = Boolean(cloud && cloud.signedIn)
 
   const active =
     workspace.galleries.find((gallery) => gallery.id === workspace.activeGalleryId) ||
@@ -129,14 +140,17 @@ export function Workspace({ value, onChange, onResetSample }) {
         <div>
           <h1>Galleries</h1>
           <p className="gy-hint">
-            Pictures stay on this computer. Download JSON if you want a
-            copy. Open a gallery, or make a blank one.
+            Pictures stay on this computer until you sign in below. Get the
+            files if you want the gallery in your own app.
           </p>
         </div>
         <div className="gy-actions">
           <button type="button" className="gy-btn-ghost" onClick={() => downloadWorkspace(workspace)}>
             Download all galleries
           </button>
+          <a className="gy-btn-ghost" href="https://github.com/Aaronlb912/gallery">
+            Get the files
+          </a>
           <button type="button" className="gy-btn-ghost" onClick={() => jsonInput.current && jsonInput.current.click()}>
             Load JSON
           </button>
@@ -155,6 +169,8 @@ export function Workspace({ value, onChange, onResetSample }) {
         onChange={loadJson}
       />
       {miss ? <p className="gy-miss">{miss}</p> : null}
+      {cloudMiss ? <p className="gy-miss">{cloudMiss}</p> : null}
+      {cloudNote ? <p className="gy-note">{cloudNote}</p> : null}
       {workspace.galleries.length === 0 ? (
         <p className="gy-empty">No galleries. Make one to start.</p>
       ) : (
@@ -210,6 +226,44 @@ export function Workspace({ value, onChange, onResetSample }) {
         </label>
         <button type="submit">New gallery</button>
       </form>
+      {onSignInCloud ? (
+        <div className="gy-cloud">
+          <h2>Keep these galleries on your other devices</h2>
+          <p className="gy-hint">
+            Sign in. A window opens. Make a free account, or use one you
+            already have. This page remembers you. On your phone, open the
+            same demo and sign in with that same account. No keys to copy.
+          </p>
+          {connected ? (
+            <p className="gy-note">
+              {cloud.name
+                ? `Signed in as ${cloud.name}.`
+                : 'Signed in. Galleries save to this account.'}
+            </p>
+          ) : (
+            <p className="gy-note">
+              Until you sign in, galleries stay in this browser only.
+            </p>
+          )}
+          <div className="gy-actions">
+            {connected ? null : (
+              <button type="button" onClick={onSignInCloud}>
+                Sign in
+              </button>
+            )}
+            {connected ? (
+              <button type="button" className="gy-btn-ghost" onClick={onPullCloud}>
+                Load saved galleries
+              </button>
+            ) : null}
+            {connected ? (
+              <button type="button" className="gy-quiet" onClick={onForgetCloud}>
+                Sign out
+              </button>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }
