@@ -35,7 +35,7 @@ Email on `.example`. Bisque waiting is the empty shelf.
 - [x] Session 4 (expand A): richer pieces (title, credit, date), click
       to edit, search, Escape cancels.
 - [x] Session 5 (expand B): several galleries, blank gallery, duplicate.
-- [ ] Session 6: screenshots, demo video, README Demo, LinkedIn draft,
+- [x] Session 6: screenshots, demo video, README Demo, LinkedIn draft,
       SHIPPED.
 
 ## Usefulness check
@@ -56,8 +56,8 @@ Email on `.example`. Bisque waiting is the empty shelf.
 8. Miss and recover? Yes. Add with no photo. Bad file. Empty gallery.
    Blank gallery name. Last gallery. Then add a photo or load a good
    file.
-9. README says how? Who, what, run, copy `src/lib/`, import, props.
-   Demo stills and github.com player wait until SHIPPED.
+9. README says how? Yes. Who, what, run, copy `src/lib/`, import,
+   props, three tool stills, github.com player.
 
 ## Go deep (done-means)
 
@@ -72,13 +72,12 @@ says what to do next. Quiet Edit/Remove. Old JSON still loads.
 
 ## This session
 
-Click a print to see it large. Undo after Remove. Print wall. Drop and
-drag hint. Leave the demo running.
+Ship: screenshots, demo video, README Demo, LinkedIn draft, GitHub
+Pages, SHIPPED.
 
 ## Next session
 
-Screenshots, demo video, README Demo, LinkedIn draft, SHIPPED. Only
-when he asks, or when this TARGET says to ship.
+None. Product is shipped. Do not start a second idea in this repo.
 
 ## SHIPPED means
 

@@ -4,6 +4,12 @@ Photos with captions. Add a picture. Move it. Keep more than one
 gallery. Load and download JSON. Drop `src/lib/` into a React app you
 already have.
 
+Try it:
+https://aaronlb912.github.io/gallery/
+
+Pictures on that page stay in your browser. Get the files if you want
+the gallery in your own app.
+
 The demo starts on the gallery list. DEMO GALLERY Mill Street Pottery
 is the sample. Names are fake. Open it, or make a blank gallery.
 
@@ -41,12 +47,32 @@ only `caption` still loads.
 
 ## Run the demo
 
+Live: https://aaronlb912.github.io/gallery/
+
+Files: https://github.com/Aaronlb912/gallery
+
+On your machine:
+
 ```
 npm install
 npm start
 ```
 
 Open http://127.0.0.1:49340/
+
+## Demo
+
+![The gallery list. DEMO GALLERY Mill Street Pottery is the sample.](docs/media/gallery-page.png)
+
+![DEMO GALLERY Mill Street Pottery with pictures on the shelf.](docs/media/gallery-result.png)
+
+![Save with no photo. Need a photo.](docs/media/gallery-miss.png)
+
+https://github.com/user-attachments/assets/e2a4aace-49f0-4c48-a073-82e184b68766
+
+Repo copy: [docs/media/gallery-demo.mp4](docs/media/gallery-demo.mp4)
+
+Voice is Microsoft Andrew Neural. Music is Wallpaper by Kevin MacLeod (incompetech.com), CC BY 3.0.
 
 ## Copy into an app
 

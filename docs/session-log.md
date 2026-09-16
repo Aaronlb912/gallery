@@ -73,3 +73,18 @@ Next session:
 - README Demo with github.com player
 - LinkedIn draft
 - Mark SHIPPED
+
+## 2026-09-16 — session 5 — SHIPPED
+
+Runs: http://127.0.0.1:49340/ (`npm start`)
+Live: https://aaronlb912.github.io/gallery/
+
+Landed:
+- Tool stills in `docs/media/` (page, result, miss)
+- Labeled walkthrough `docs/media/gallery-demo.mp4`
+- README Demo stills plus github.com player
+- GitHub Pages workflow
+- LinkedIn draft at `docs/linkedin-post.md` (local only)
+
+Next session:
+- None. This product is done.
