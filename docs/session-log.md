@@ -40,3 +40,19 @@ Next session:
 - README Demo with github.com player
 - LinkedIn draft
 - Mark SHIPPED
+
+## 2026-09-16 — session 3
+
+Runs: http://127.0.0.1:49340/ (`npm start`)
+
+Landed:
+- CSS pass on list, grid, empty shelf, and edit page
+- Paper mats, list thumbs, dates like Sep 12, 2026
+- Same clay catalog look, tighter type and spacing
+
+Next session:
+- Screenshots (page, result, miss)
+- Demo video
+- README Demo with github.com player
+- LinkedIn draft
+- Mark SHIPPED

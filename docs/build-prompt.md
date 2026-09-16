@@ -70,8 +70,8 @@ says what to do next. Quiet Edit/Remove. Old JSON still loads.
 
 ## This session
 
-Drop, reorder, persist, load JSON, edit page, search, several
-galleries, blank, duplicate. Leave the demo running.
+CSS pass. Catalog mats, list thumbs, paper edit page. Leave the demo
+running.
 
 ## Next session
 

@@ -1,3 +1,26 @@
+function formatDate(value) {
+  if (!value) return ''
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value)
+  if (!match) return value
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
+  const month = months[Number(match[2]) - 1]
+  if (!month) return value
+  return `${month} ${Number(match[3])}, ${match[1]}`
+}
+
 export function Item({
   item,
   dragging,
@@ -39,7 +62,7 @@ export function Item({
       <h3 className="gy-item-title">{item.title || 'Untitled piece'}</h3>
       <p className="gy-caption">{item.caption || 'No caption yet.'}</p>
       {item.credit ? <p className="gy-meta">{item.credit}</p> : null}
-      {item.date ? <p className="gy-meta">{item.date}</p> : null}
+      {item.date ? <p className="gy-meta">{formatDate(item.date)}</p> : null}
       <div className="gy-item-actions">
         <button type="button" className="gy-quiet" onClick={() => onOpen(item.id)}>
           Edit

@@ -161,13 +161,20 @@ export function Workspace({ value, onChange, onResetSample }) {
         <ul className="gy-list">
           {workspace.galleries.map((gallery) => (
             <li key={gallery.id} className="gy-row">
-              <div>
-                <p className="gy-row-name">{gallery.title || 'Untitled gallery'}</p>
-                <p className="gy-meta">
-                  {itemCount(gallery) === 1
-                    ? '1 photo'
-                    : `${itemCount(gallery)} photos`}
-                </p>
+              <div className="gy-row-lead">
+                <div className={gallery.items[0] && gallery.items[0].src ? 'gy-row-thumb' : 'gy-row-thumb is-empty'}>
+                  {gallery.items[0] && gallery.items[0].src ? (
+                    <img src={gallery.items[0].src} alt="" />
+                  ) : null}
+                </div>
+                <div>
+                  <p className="gy-row-name">{gallery.title || 'Untitled gallery'}</p>
+                  <p className="gy-meta">
+                    {itemCount(gallery) === 1
+                      ? '1 photo'
+                      : `${itemCount(gallery)} photos`}
+                  </p>
+                </div>
               </div>
               <div className="gy-actions">
                 <button type="button" onClick={() => openGallery(gallery.id)}>
