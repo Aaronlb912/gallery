@@ -9,27 +9,32 @@ Prompt file (do not wait for a paste):
 Kind: gallery. Not a board. Not a scheduler. Not a search.
 
 Local URL: http://127.0.0.1:49340/
+Repo: https://github.com/Aaronlb912/gallery
 
 Pages:
-- Gallery: grid of photos, captions, add a photo, remove, download JSON.
-- Later: drop, reorder, edit a piece, several galleries, load JSON.
+- Gallery list: open, new blank, duplicate, remove. Reset sample.
+- Gallery: grid, drop, reorder, search, rename, add photo, load and
+  download JSON (this gallery or all galleries).
+- New photo: header Add photo. Save. Escape cancels.
+- Edit piece: Edit on a piece. Title, caption, credit, date. Duplicate.
 
 Auth: none.
 
 Sample: Mill Street Pottery in `src/lib/sample-gallery.js`. Fake names.
-Email on `.example`.
+Email on `.example`. Bisque waiting is the empty shelf.
 
 ## Session plan
 
 - [x] Session 1: scaffold, grid with sample photos and captions, add a
       photo, JSON download, demo running.
-- [ ] Session 2: drop a photo onto the grid, reorder photos.
-- [ ] Session 3: load JSON, miss states (no photo, bad file), empty
+- [x] Session 2: drop a photo onto the grid, reorder photos.
+- [x] Session 3: load JSON, miss states (no photo, bad file), empty
       gallery, persist in the demo.
-- [ ] Session 4 (expand A): richer pieces (title, credit, date), click
+- [x] Session 4 (expand A): richer pieces (title, credit, date), click
       to edit, search, Escape cancels.
-- [ ] Session 5 (expand B): several galleries, blank gallery, duplicate,
-      screenshots, demo video, README Demo, SHIPPED.
+- [x] Session 5 (expand B): several galleries, blank gallery, duplicate.
+- [ ] Session 6: screenshots, demo video, README Demo, LinkedIn draft,
+      SHIPPED.
 
 ## Usefulness check
 
@@ -41,13 +46,14 @@ Email on `.example`.
 3. Make it theirs? Yes. Gallery title, captions, CSS in
    `src/lib/gallery.css`.
 4. Take it? Yes. Copy `src/lib/` into their React `src/` and import
-   `Gallery`.
+   `Workspace` or `Gallery`.
 5. No account? Yes. No signup. No npm publish.
 6. Coworker test? Yes. Zip `src/lib/`. They drop it in and import.
 7. Keep a copy? Yes. Download JSON. The useful output is also the
    component running in their app with their pictures.
 8. Miss and recover? Yes. Add with no photo. Bad file. Empty gallery.
-   Then add a photo or load a good file.
+   Blank gallery name. Last gallery. Then add a photo or load a good
+   file.
 9. README says how? Who, what, run, copy `src/lib/`, import, props.
    Demo stills and github.com player wait until SHIPPED.
 
@@ -59,20 +65,18 @@ can use the sample or start blank. Work stays after a refresh in the
 demo, and JSON download works. Host apps get `value` / `onChange`. They
 can find a piece later (search). A miss is recoverable. Title, names,
 and CSS can change. `src/lib/` copies into an existing React app.
-Rename. Duplicate a gallery if that job copies work. Escape cancels an
-editor. Empty gallery says what to do next. Quiet Edit/Remove. Old JSON
-still loads.
+Rename. Duplicate a gallery. Escape cancels an editor. Empty gallery
+says what to do next. Quiet Edit/Remove. Old JSON still loads.
 
 ## This session
 
-Session 1. Scaffold. Grid. Sample pots. Add a photo. Remove. Download
-JSON. Leave the demo running.
+Drop, reorder, persist, load JSON, edit page, search, several
+galleries, blank, duplicate. Leave the demo running.
 
 ## Next session
 
-- Drop a photo onto the grid
-- Reorder photos
-- JSON download still writes the gallery after a move
+Screenshots, demo video, README Demo, LinkedIn draft, SHIPPED. Only
+when he asks, or when this TARGET says to ship.
 
 ## SHIPPED means
 
@@ -80,4 +84,4 @@ Session plan checked. Usefulness 1-9 all yes. README has copy
 `src/lib/`, import, props, three tool screenshots, and a github.com
 player URL. Log marked SHIPPED. This product appended to the
 multi-session React prompt's shipped list. No second product in this
-repo. Do not SHIPPED from session 1.
+repo. Do not SHIPPED until screenshots and video.
