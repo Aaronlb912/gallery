@@ -14,9 +14,11 @@ Repo: https://github.com/Aaronlb912/gallery
 Pages:
 - Gallery list: open, new blank, duplicate, remove. Reset sample.
 - Gallery: grid, drop, reorder, search, rename, add photo, load and
-  download JSON (this gallery or all galleries).
+  download JSON (this gallery or all galleries). Click a print to see
+  it large. Print wall. Undo after Remove.
 - New photo: header Add photo. Save. Escape cancels.
 - Edit piece: Edit on a piece. Title, caption, credit, date. Duplicate.
+- Large print: click the picture. Escape goes back.
 
 Auth: none.
 
@@ -70,8 +72,8 @@ says what to do next. Quiet Edit/Remove. Old JSON still loads.
 
 ## This session
 
-CSS pass. Catalog mats, list thumbs, paper edit page. Leave the demo
-running.
+Click a print to see it large. Undo after Remove. Print wall. Drop and
+drag hint. Leave the demo running.
 
 ## Next session
 

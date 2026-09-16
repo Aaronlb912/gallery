@@ -20,6 +20,7 @@ Copy `src/lib/`. That folder is the component.
 - `Gallery.jsx` - one gallery
 - `Item.jsx` - compact piece
 - `ItemPage.jsx` - new photo and edit
+- `View.jsx` - large print
 - `gallery.css` - the look
 - `gallery-json.js` - download, load parse, blank template, and move
   helpers
@@ -30,7 +31,9 @@ No account. Galleries opens the list. A new gallery starts empty.
 Duplicate a gallery. You cannot remove the last one. The demo keeps
 galleries after a refresh (Reset sample on the list if you want Mill
 Street back). Add photo in the header opens a page. Escape cancels.
-Drop a picture on the grid to add it. Drag a piece to reorder. Search
+Drop a picture on the grid to add it. Drag a piece to reorder. Click a
+print to see it large. Escape goes back. Remove a piece, then Undo for
+a few seconds. Print wall sends the shelf to the printer. Search
 finds title, caption, and credit. Rename the gallery with Edit. Edit a
 piece for title, caption, credit, and date. Load JSON for one gallery
 or all galleries. Download this gallery or all galleries. Old JSON with

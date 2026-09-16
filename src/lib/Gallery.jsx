@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Item } from './Item.jsx'
 import { ItemPage } from './ItemPage.jsx'
+import { View } from './View.jsx'
 import {
   downloadGallery,
   isImageFile,
@@ -25,8 +26,11 @@ export function Gallery({
   const drag = useRef(null)
   const skipClick = useRef(false)
   const fileOver = useRef(0)
+  const undoTimer = useRef(null)
   const [query, setQuery] = useState('')
   const [miss, setMiss] = useState('')
+  const [undo, setUndo] = useState(null)
+  const [looking, setLooking] = useState(null)
   const [galleryTitle, setGalleryTitle] = useState(value.title)
   const [renaming, setRenaming] = useState(false)
   const [view, setView] = useState({ name: 'gallery' })
@@ -42,14 +46,37 @@ export function Gallery({
     if (renaming && titleInput.current) titleInput.current.focus()
   }, [renaming])
 
+  useEffect(() => {
+    return () => {
+      if (undoTimer.current) clearTimeout(undoTimer.current)
+    }
+  }, [])
+
   const filtering = Boolean(query.trim())
   const shown = filtering ? value.items.filter((item) => itemMatches(item, query)) : value.items
 
   function removeItem(id) {
+    const index = value.items.findIndex((item) => item.id === id)
+    if (index < 0) return
+    const item = value.items[index]
     onChange({
       ...value,
-      items: value.items.filter((item) => item.id !== id),
+      items: value.items.filter((piece) => piece.id !== id),
     })
+    if (undoTimer.current) clearTimeout(undoTimer.current)
+    setUndo({ item, index })
+    setLooking(null)
+    undoTimer.current = setTimeout(() => setUndo(null), 12000)
+  }
+
+  function undoRemove() {
+    if (!undo) return
+    if (undoTimer.current) clearTimeout(undoTimer.current)
+    const items = [...value.items]
+    const at = Math.min(undo.index, items.length)
+    items.splice(at, 0, undo.item)
+    onChange({ ...value, items })
+    setUndo(null)
   }
 
   function saveTitle(event) {
@@ -131,6 +158,7 @@ export function Gallery({
     }
     drag.current = itemId
     setDragId(itemId)
+    skipClick.current = true
     event.dataTransfer.effectAllowed = 'move'
     event.dataTransfer.setData('text/plain', itemId)
   }
@@ -207,13 +235,20 @@ export function Gallery({
     })
   }
 
-  function openEdit(id) {
+  function openView(id) {
     if (skipClick.current) {
       skipClick.current = false
       return
     }
     const item = value.items.find((piece) => piece.id === id)
     if (!item) return
+    setLooking(item)
+  }
+
+  function openEdit(id) {
+    const item = value.items.find((piece) => piece.id === id)
+    if (!item) return
+    setLooking(null)
     setView({ name: 'item', mode: 'edit', item })
   }
 
@@ -226,12 +261,14 @@ export function Gallery({
         : [...value.items, next],
     })
     setView({ name: 'gallery' })
+    setLooking(null)
     setMiss('')
   }
 
   function duplicateItem(copy) {
     onChange({ ...value, items: [...value.items, copy] })
     setView({ name: 'gallery' })
+    setLooking(null)
     setMiss('')
   }
 
@@ -310,19 +347,22 @@ export function Gallery({
           )}
           {value.note ? <p className="gy-note">{value.note}</p> : null}
         </div>
-        <div className="gy-actions">
+        <div className="gy-actions gy-print-hide">
           {onGalleries ? (
             <button type="button" className="gy-btn-ghost" onClick={onGalleries}>
               Galleries
             </button>
           ) : null}
+          <button type="button" className="gy-btn-ghost" onClick={() => window.print()}>
+            Print wall
+          </button>
           <button type="button" onClick={openNew}>
             Add photo
           </button>
         </div>
       </header>
 
-      <div className="gy-tools">
+      <div className="gy-tools gy-print-hide">
         <label>
           Search
           <input
@@ -354,7 +394,19 @@ export function Gallery({
         />
       </div>
       {miss ? <p className="gy-miss">{miss}</p> : null}
-      {fileHover ? <p className="gy-drop-hint">Drop photos to add them.</p> : null}
+      {undo ? (
+        <p className="gy-undo gy-print-hide">
+          Removed {undo.item.title || 'a photo'}.{' '}
+          <button type="button" className="gy-quiet" onClick={undoRemove}>
+            Undo
+          </button>
+        </p>
+      ) : null}
+      <p className="gy-use gy-print-hide">
+        Drop a picture on the shelf. Drag a print to reorder. Click a print to
+        see it large.
+      </p>
+      {fileHover ? <p className="gy-drop-hint gy-print-hide">Drop photos to add them.</p> : null}
 
       {value.items.length === 0 ? (
         <div className="gy-empty-box">
@@ -371,6 +423,7 @@ export function Gallery({
               dragging={dragId === item.id}
               dropLine={over && over.id === item.id ? over.where : ''}
               lockDrag={filtering}
+              onView={openView}
               onOpen={openEdit}
               onRemove={removeItem}
               onDragStart={(event) => startDrag(event, item.id)}
@@ -381,6 +434,13 @@ export function Gallery({
           ))}
         </div>
       )}
+      {looking ? (
+        <View
+          item={looking}
+          onClose={() => setLooking(null)}
+          onEdit={openEdit}
+        />
+      ) : null}
     </div>
   )
 }

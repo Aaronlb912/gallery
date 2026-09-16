@@ -56,3 +56,20 @@ Next session:
 - README Demo with github.com player
 - LinkedIn draft
 - Mark SHIPPED
+
+## 2026-09-16 — session 4
+
+Runs: http://127.0.0.1:49340/ (`npm start`)
+
+Landed:
+- Click a print to see it large. Escape goes back
+- Undo after Remove (a few seconds)
+- Print wall
+- Hint: drop, drag, click
+
+Next session:
+- Screenshots (page, result, miss)
+- Demo video
+- README Demo with github.com player
+- LinkedIn draft
+- Mark SHIPPED

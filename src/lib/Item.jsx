@@ -1,31 +1,11 @@
-function formatDate(value) {
-  if (!value) return ''
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value)
-  if (!match) return value
-  const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ]
-  const month = months[Number(match[2]) - 1]
-  if (!month) return value
-  return `${month} ${Number(match[3])}, ${match[1]}`
-}
+import { formatDate } from './gallery-json.js'
 
 export function Item({
   item,
   dragging,
   dropLine,
   lockDrag,
+  onView,
   onOpen,
   onRemove,
   onDragStart,
@@ -52,7 +32,18 @@ export function Item({
       onDrop={onDrop}
       onDragEnd={onDragEnd}
     >
-      <div className="gy-mat">
+      <div
+        className="gy-mat"
+        role="button"
+        tabIndex={0}
+        onClick={() => onView(item.id)}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault()
+            onView(item.id)
+          }
+        }}
+      >
         {item.src ? (
           <img src={item.src} alt="" />
         ) : (
